@@ -12,6 +12,6 @@ jobs:
           organization: GitHub-Campus-IITM
           label: Invitation
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          comment: '<b>Invitation sent to join the GitHub Organisation. Welcome to the community 🎉</b><br>Please check your email to get the incitation link<br>Don''t forget after accepting to make it public so it appears on your GitHub profile for everyone else to see. '
+          comment: '<b>Invitation sent to join the GitHub Organisation. Welcome to the community 🎉</b><br>Please check your email to get the incitation link<br>Don''t forget after accepting to make it public so it appears on your GitHub profile for everyone else to see. <br> Please join the <a href="https://groups.google.com/a/smail.iitm.ac.in/g/github-campus-group">google group</a> using your smail ID to stay tuned.'
         env:
           INVITE_TOKEN: ${{ secrets.INVITE_TOKEN }}
