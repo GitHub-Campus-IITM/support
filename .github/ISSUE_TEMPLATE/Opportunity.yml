@@ -1,0 +1,28 @@
+name: Job Opportunity For Students
+description: Hey I have an opportunity for interested people
+title: "Job Opportunity For Students"
+labels: [Hiring]
+body:
+  - type: input
+    id: company
+    attributes:
+      label: Company
+      placeholder: Let us know who are you
+    validations:
+      required: true
+  
+  - type: input
+    id: link
+    attributes:
+      label: Registration
+      placeholder: Please provide the link/email to register
+    validations:
+      required: true
+ 
+  - type: textarea
+    id: jd
+    attributes:
+      label: JD
+      placeholder: Please provide the Job Description here. Use HTML to style instead of Markdown. Please include your contact details too.
+    validations:
+      required: true
