@@ -28,7 +28,8 @@ jobs:
           username: ${{SECRETS.EMAIL}}
           password: ${{SECRETS.PASSWORD}}
           subject: Opportunity for you
-          to: sudmondal2002@gmail.com
+          to: github-campus-group@smail.iitm.ac.in
+          cc: ce20b112@smail.iitm.ac.in
           from: GitHub Campus Expert
           html_body: file://temp.html
           secure: true
