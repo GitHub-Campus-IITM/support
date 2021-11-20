@@ -3,15 +3,46 @@ on:
     types: [labeled]
 
 jobs:
-  automate_invite:
+  Broadcast:
+    if: ${{ github.event.label.name == 'Invitation' }}
     runs-on: ubuntu-latest
     steps:
+      - name: Issue Parser
+        uses: stefanbuck/github-issue-parser@v2
+        id: issue-parser
+        with:
+          template-path: .github/ISSUE_TEMPLATE/invitation.yml
+          
+      - name : Mail Parsing 
+        id: mail
+        run: | 
+          JSON=`echo '${{ steps.issue-parser.outputs.jsonString }}'`
+          mail=`echo $(jq -r '.smail_id' <<< "$JSON")`
+          echo "::set-output name=mail::$(echo $mail)"
+          
+      - name: Send mail
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{SECRETS.EMAIL}}
+          password: ${{SECRETS.PASSWORD}}
+          subject: Opportunity for you
+          to: ${{steps.mail.outputs.mail}}
+          from: GitHub Campus Expert
+          body: ${{SECRETS.INVITATION_MAIL}}
+          secure: true
+          ignore_cert: true
+          convert_markdown: true
+          priority: low
+          
       - name: invite-on-label
         uses: vj-abigo/invite-on-label@v1.2
         with:
           organization: GitHub-Campus-IITM
           label: Invitation
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          comment: '<b>Invitation sent to join the GitHub Organisation. Welcome to the community 🎉</b><br>Please check your email to get the incitation link<br>Don''t forget after accepting to make it public so it appears on your GitHub profile for everyone else to see. <br> Please join the <a href="https://groups.google.com/a/smail.iitm.ac.in/g/github-campus-group">google group</a> using your smail ID to stay tuned.'
+          comment: "<b>Invitation sent to join the GitHub Organisation. Welcome to the community 🎉</b><br>Please check your email to get the invitation link<br>Don't forget to make it public after accepting so it appears on your GitHub profile for everyone else to see."
         env:
           INVITE_TOKEN: ${{ secrets.INVITE_TOKEN }}
+          
