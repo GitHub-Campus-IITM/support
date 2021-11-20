@@ -18,7 +18,7 @@ jobs:
           com=`echo $(jq -r '.company' <<< "$JSON")`
           reg=`echo $(jq -r '.registration' <<< "$JSON")`
           jd=`echo $(jq -r '.jd' <<< "$JSON")`
-          echo "<h1> Opprtunity from`echo $com` </h1> <div> <h2>Job Description</h2><div>`echo $jd` </div></div><div>Interested students please apply here: `echo $reg`<div>" > temp.html
+          echo "<h1> Opprtunity from `echo $com` </h1> <div> <h2>Job Description</h2><div>`echo $jd` </div></div><div>Interested students please apply here: `echo $reg`<div>" > temp.html
               
       - name: Send mail
         uses: dawidd6/action-send-mail@v3
