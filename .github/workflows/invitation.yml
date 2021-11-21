@@ -27,7 +27,7 @@ jobs:
           server_port: 465
           username: ${{SECRETS.EMAIL}}
           password: ${{SECRETS.PASSWORD}}
-          subject: Tnaks for joining 🥳🥳🚩
+          subject: Tnaks for joining
           to: ${{steps.mail.outputs.mail}}
           from: GitHub Campus Expert
           body: ${{SECRETS.INVITATION_MAIL}}
