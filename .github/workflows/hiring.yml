@@ -11,7 +11,7 @@ jobs:
         uses: stefanbuck/github-issue-parser@v2
         id: issue-parser
         with:
-          template-path: .github/ISSUE_TEMPLATE/Opportunity.yml
+          template-path: .github/ISSUE_TEMPLATE/hiring.yml
       - run: | 
           JSON=`echo '${{ steps.issue-parser.outputs.jsonString }}'`
           echo $JSON
