@@ -1,6 +1,6 @@
 on:
   issues:
-    types: [labeled]
+    types: ['Hiring']
 
 jobs:
   Broadcast:
